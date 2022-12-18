@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A9856C2B-7F53-4897-9DCA-D9D540238BD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandsMemoAPI", "src\CommandsMemoAPI\CommandsMemoAPI.csproj", "{6E1A8BC7-EB6A-49E6-A652-01D4FB193C16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandsMemo.Tests", "test\CommandsMemo.Tests\CommandsMemo.Tests.csproj", "{FF50803D-27A7-4C98-9F70-51DBF9E679A6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E1A8BC7-EB6A-49E6-A652-01D4FB193C16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E1A8BC7-EB6A-49E6-A652-01D4FB193C16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E1A8BC7-EB6A-49E6-A652-01D4FB193C16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E1A8BC7-EB6A-49E6-A652-01D4FB193C16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF50803D-27A7-4C98-9F70-51DBF9E679A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF50803D-27A7-4C98-9F70-51DBF9E679A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF50803D-27A7-4C98-9F70-51DBF9E679A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF50803D-27A7-4C98-9F70-51DBF9E679A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6E1A8BC7-EB6A-49E6-A652-01D4FB193C16} = {A9856C2B-7F53-4897-9DCA-D9D540238BD6}
+	EndGlobalSection
+EndGlobal
