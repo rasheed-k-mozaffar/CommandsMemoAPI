@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 //Registering services in the IoC Container.
 builder.Services.AddControllers();
 builder.Services.ConfigureCommandsRepo();
+builder.Services.ConfigureSqlConnection(builder.Configuration);
 
 var app = builder.Build();
 

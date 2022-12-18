@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using CommandsMemoAPI.Repositories;
+using CommandsMemoAPI.Models;
 
 namespace CommandsMemoAPI.Controllers;
 
@@ -22,8 +23,19 @@ public class CommandsController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<string>> Get()
+    public async Task<ActionResult<IEnumerable<Command>>> GetAll()
     {
-        return new string[] { "This", "is", "hard", "coded", " !" };
+        var commandItems = await _commandRepo.GetAllCommandsAsync();
+        return Ok(commandItems);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Command>> GetById(int id)
+    {
+        var commandItem = await _commandRepo.GetCommandByIdAsync(id);
+        if (commandItem is null)
+            return NotFound($"No command was found with the ID: {id}");
+
+        return Ok(commandItem);
     }
 }
