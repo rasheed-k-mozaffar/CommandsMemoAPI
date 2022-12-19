@@ -12,6 +12,7 @@ sqlConnection.Password = builder.Configuration["Password"];
 builder.Services.AddControllers();
 builder.Services.ConfigureCommandsRepo();
 builder.Services.ConfigureSqlConnection(sqlConnection.ConnectionString);
+builder.Services.ConfigureAutoMapper();
 
 var app = builder.Build();
 

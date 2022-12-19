@@ -30,7 +30,7 @@ public class CommandAPIRepo : ICommandAPIRepo
 
     public async Task<Command> GetCommandByIdAsync(int id)
     {
-        return await _context.CommandItems.FindAsync(id);
+        return (await _context.CommandItems.FindAsync(id))!;
     }
 
     public Task<bool> SaveChangesAsync()
