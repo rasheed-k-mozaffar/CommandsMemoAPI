@@ -1,5 +1,6 @@
 using CommandsMemoAPI.Extensions;
 using Microsoft.Data.SqlClient;
+using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 var sqlConnection = new SqlConnectionStringBuilder();
@@ -9,7 +10,10 @@ sqlConnection.Password = builder.Configuration["Password"];
 
 
 //Registering services in the IoC Container.
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(s =>
+{
+    s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+});
 builder.Services.ConfigureCommandsRepo();
 builder.Services.ConfigureSqlConnection(sqlConnection.ConnectionString);
 builder.Services.ConfigureAutoMapper();

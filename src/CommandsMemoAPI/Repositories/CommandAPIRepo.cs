@@ -21,9 +21,12 @@ public class CommandAPIRepo : ICommandAPIRepo
         await _context.CommandItems.AddAsync(cmd);
     }
 
-    public Task DeleteCommand(Command cmd)
+    public void DeleteCommand(Command cmd)
     {
-        throw new NotImplementedException();
+        if (cmd is null)
+            throw new ArgumentNullException(nameof(cmd));
+
+        _context.CommandItems.Remove(cmd);
     }
 
     public async Task<IEnumerable<Command>> GetAllCommandsAsync()

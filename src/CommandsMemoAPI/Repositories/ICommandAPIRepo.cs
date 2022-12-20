@@ -9,7 +9,7 @@ public interface ICommandAPIRepo
     Task<IEnumerable<Command>> GetAllCommandsAsync();
     Task<Command> GetCommandByIdAsync(int id);
     Task CreateCommand(Command cmd);
-    Task DeleteCommand(Command cmd);
+    void DeleteCommand(Command cmd);
     Task UpdateCommand(Command cmd);
 
 

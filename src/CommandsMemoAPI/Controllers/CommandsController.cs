@@ -3,6 +3,8 @@ using CommandsMemoAPI.Repositories;
 using CommandsMemoAPI.Models;
 using AutoMapper;
 using CommandsMemoAPI.Dtos;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 namespace CommandsMemoAPI.Controllers;
 
@@ -71,6 +73,40 @@ public class CommandsController : ControllerBase
         _mapper.Map(dto, commandModel);
         //await _commandRepo.UpdateCommand(commandModel);
 
+        await _commandRepo.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+    [HttpPatch("{id}")]
+    public async Task<ActionResult> PartialUpdateCommand(int id, JsonPatchDocument<CommandUpdateDto> patchDoc)
+    {
+        var commandModel = await _commandRepo.GetCommandByIdAsync(id);
+        if (commandModel is null)
+            return NotFound($"No command was found with the ID: {id}");
+
+        var commandToPatch = _mapper.Map<CommandUpdateDto>(commandModel);
+        patchDoc.ApplyTo(commandToPatch, ModelState);
+
+        if (!TryValidateModel(commandToPatch))
+            return ValidationProblem(ModelState);
+
+        _mapper.Map(commandToPatch, commandModel);
+
+        //await _commandRepo.UpdateCommand(commandModel);
+        await _commandRepo.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteCommand(int id)
+    {
+        var commandModel = await _commandRepo.GetCommandByIdAsync(id);
+        if (commandModel is null)
+            return NotFound();
+
+        _commandRepo.DeleteCommand(commandModel);
         await _commandRepo.SaveChangesAsync();
 
         return NoContent();
