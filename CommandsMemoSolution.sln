@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandsMemoAPI", "src\Comm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandsMemo.Tests", "test\CommandsMemo.Tests\CommandsMemo.Tests.csproj", "{FF50803D-27A7-4C98-9F70-51DBF9E679A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataProvider", "DataProvider\DataProvider.csproj", "{25992AF5-999C-42A0-B949-29FF48D07645}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{FF50803D-27A7-4C98-9F70-51DBF9E679A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF50803D-27A7-4C98-9F70-51DBF9E679A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF50803D-27A7-4C98-9F70-51DBF9E679A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25992AF5-999C-42A0-B949-29FF48D07645}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25992AF5-999C-42A0-B949-29FF48D07645}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25992AF5-999C-42A0-B949-29FF48D07645}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25992AF5-999C-42A0-B949-29FF48D07645}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6E1A8BC7-EB6A-49E6-A652-01D4FB193C16} = {A9856C2B-7F53-4897-9DCA-D9D540238BD6}

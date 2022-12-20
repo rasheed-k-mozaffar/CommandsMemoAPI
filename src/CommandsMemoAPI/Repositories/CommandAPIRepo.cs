@@ -13,9 +13,12 @@ public class CommandAPIRepo : ICommandAPIRepo
         _context = context;
     }
 
-    public Task CreateCommand(Command cmd)
+    public async Task CreateCommand(Command cmd)
     {
-        throw new NotImplementedException();
+        if (cmd is null)
+            throw new ArgumentNullException(nameof(cmd));
+
+        await _context.CommandItems.AddAsync(cmd);
     }
 
     public Task DeleteCommand(Command cmd)
@@ -33,13 +36,14 @@ public class CommandAPIRepo : ICommandAPIRepo
         return (await _context.CommandItems.FindAsync(id))!;
     }
 
-    public Task<bool> SaveChangesAsync()
+    public async Task<bool> SaveChangesAsync()
     {
-        throw new NotImplementedException();
+        return (await _context.SaveChangesAsync() >= 0);
     }
 
     public Task UpdateCommand(Command cmd)
     {
-        throw new NotImplementedException();
+        //Sorry , But no code will go here ;-)
+        return null!;
     }
 }

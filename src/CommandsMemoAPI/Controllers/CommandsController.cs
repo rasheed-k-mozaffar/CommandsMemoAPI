@@ -36,7 +36,7 @@ public class CommandsController : ControllerBase
         return Ok(commandItemsAsDto);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id}", Name = "GetById")]
     public async Task<ActionResult<CommandReadDto>> GetById(int id)
     {
         var commandItem = await _commandRepo.GetCommandByIdAsync(id);
@@ -46,5 +46,33 @@ public class CommandsController : ControllerBase
         var commandItemAsDto = _mapper.Map<CommandReadDto>(commandItem);
 
         return Ok(commandItemAsDto);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<CommandReadDto>> CreateCommandAsync(CommandCreateDto dto)
+    {
+        var commandModel = _mapper.Map<Command>(dto);
+
+        await _commandRepo.CreateCommand(commandModel);
+        await _commandRepo.SaveChangesAsync();
+
+        var commandReadDto = _mapper.Map<CommandReadDto>(commandModel);
+
+        return CreatedAtAction(nameof(GetById), new { Id = commandReadDto.Id }, commandReadDto);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult> UpdateCommand(int id, CommandUpdateDto dto)
+    {
+        var commandModel = await _commandRepo.GetCommandByIdAsync(id);
+        if (commandModel is null)
+            return NotFound($"No command was found with the ID: {id}");
+
+        _mapper.Map(dto, commandModel);
+        //await _commandRepo.UpdateCommand(commandModel);
+
+        await _commandRepo.SaveChangesAsync();
+
+        return NoContent();
     }
 }
