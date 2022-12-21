@@ -29,15 +29,10 @@ public class CommandAPIRepo : ICommandAPIRepo
         _context.CommandItems.Remove(cmd);
     }
 
-    public IEnumerable<Command> GetAllCommandsAsync()
+    public async Task<IEnumerable<Command>> GetAllCommandsAsync()
     {
-        throw new NotImplementedException();
+        return await _context.CommandItems.ToListAsync();
     }
-
-    // public async Task<IEnumerable<Command>> GetAllCommandsAsync()
-    // {
-    //     return await _context.CommandItems.ToListAsync();
-    // }
 
     public async Task<Command> GetCommandByIdAsync(int id)
     {
